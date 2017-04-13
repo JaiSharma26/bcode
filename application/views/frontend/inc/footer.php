@@ -10,6 +10,7 @@
 		<script src="<?php echo base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 		<!-- Bootstrap WYSIHTML5 -->
 		<script src="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+		<script src="<?php echo base_url();?>assets/js/custom.js"></script>
 	 </footer>
 	</body>
 </html>
