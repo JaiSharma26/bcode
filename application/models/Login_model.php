@@ -16,6 +16,13 @@ class Login_model extends CI_Model {
 
         	return $query->row();
         }
+        public function userLogin($record) {
+                $query = $this->db->from('users');
+                 $query->where(['username' => $record['username']])->or_where(['email'=> $record['username']]);
+                 return $query->get()->row();
+
+
+        }
 
 }
 
