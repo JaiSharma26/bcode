@@ -56,6 +56,7 @@ $route['default_controller'] = 'main';
 
 $route['admin'] = 'admin/admin';
 $route['admin/home'] = 'admin/admin/home';
+$route['admin/users'] = 'admin/admin/users';
 $route['admin/logout'] = 'admin/admin/logout';
 
 

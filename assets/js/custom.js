@@ -39,4 +39,18 @@ $(document).ready(function(){
 		})
 
 	});
+
+	//edit-delete user
+
+	$(document).on('click','.edit-user',function() {
+
+		$.ajax({
+
+			//type:'POST',
+			//url:URL+''
+
+		});
+
+	});
+
 });

@@ -39,7 +39,7 @@
           </ul>
         </li>
         <li>
-          <a href="<?php echo site_url('')?>">
+          <a href="<?php echo site_url('admin/users')?>">
             <i class="fa fa-user"></i> <span>User</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>

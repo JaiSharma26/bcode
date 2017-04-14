@@ -24,6 +24,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->library('encrypt');
 		$this->load->model('login_model');
+		$this->load->model('admin_user','users');
 		$this->load->library('phpass');
 		$this->load->library('session');
 	}
@@ -53,8 +54,24 @@ class Admin extends CI_Controller {
 		} //endif
 
 		$this->load->view('admin/inc/header');
+		$this->load->view('admin/inc/sidebar');
 		$this->load->view('admin/index');
 		$this->load->view('admin/inc/footer');
+	}
+
+	public function users() {
+
+		$users = $this->users->getUser();
+
+		$data['breadcrumb'] = 'Users';
+		$data['record'] = $users;
+
+		$this->load->view('admin/inc/header',$data);
+		$this->load->view('admin/inc/sidebar');
+		$this->load->view('admin/users');
+		$this->load->view('admin/inc/footer');
+
+		//echo '<pre>'; print_r($users); die;
 	}
 	
 	public function logout()
