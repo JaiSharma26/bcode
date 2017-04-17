@@ -40,16 +40,74 @@ $(document).ready(function(){
 
 	});
 
-	//edit-delete user
+	/*** edit user ***/
 
-	$(document).on('click','.edit-user',function() {
+	$('.edit-user').on('click',function() {
 
-		$.ajax({
 
-			//type:'POST',
-			//url:URL+''
+		 var userId = $(this).data('userid');
+		 $.ajax({
+
+		 	type:'POST',
+		 	url: URL+'admin/user/edit',
+		 	data: {userId : userId },
+		 	success:function(data) {
+		 		//alert(data);
+		 		$('#myModal .modal-body').html(data);
+		 		$('#myModal').modal('show');
+		 	}
+
+		 });
+
+	});
+
+	/*** (end)edit user ***/	
+	/**** delete user ****/
+
+	$('.delete-user').on('click',function() {
+		var userId = $(this).data('userid');
+		bootbox.confirm("This is the default confirm!", function(result){
+			 //console.log('This was logged in the callback: ' + result);
+
+			 if(result == true) {
+
+			 	$.ajax({
+
+			 		type:"POST",
+			 		url:URL+'admin/user/delete',
+			 		data:{userId : userId},
+			 		success:function(data) {
+
+			 			//after delete result
+
+			 		}
+
+			 	});
+
+			 }
 
 		});
+	});
+
+	/**** (end)delete user ****/
+	$('.user-switch').on('change',function() {
+			var userId = $(this).data('userid');
+			var checked = 'N';
+			if($(this).is(':checked')) {
+				//alert('checked');
+				checked = 'Y';
+			} else {
+				checked = 'N';
+			}
+			$.ajax({
+			 		type:"POST",
+			 		url:URL+'admin/user/activeuser',
+			 		data:{userId : userId,checked : checked},
+			 		success:function(data) {
+
+			 				//after active action
+			 		}
+			});
 
 	});
 

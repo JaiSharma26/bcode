@@ -29,6 +29,7 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url();?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/custom.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -65,7 +66,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>assets/js/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/custom.js"></script>
 
 </body>
 </html>

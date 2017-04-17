@@ -29,6 +29,15 @@ class Admin extends CI_Controller {
 		$this->load->library('session');
 	}
 
+
+	private function nologin() {
+
+		if($this->session->userdata('uid') == '' || empty($this->session->userdata('uid'))) {
+			redirect('admin'); exit();
+		} //endif
+
+	}
+
 	public function index()
 	{
 		//echo $this->phpass->hash('admin@123'); die;
@@ -49,9 +58,12 @@ class Admin extends CI_Controller {
 
 	public function home()
 	{
+		/*
 		if($this->session->userdata('uid') == '' || empty($this->session->userdata('uid'))) {
 			redirect('admin'); exit();
 		} //endif
+		*/
+		self::nologin();
 
 		$this->load->view('admin/inc/header');
 		$this->load->view('admin/inc/sidebar');
@@ -61,7 +73,9 @@ class Admin extends CI_Controller {
 
 	public function users() {
 
-		$users = $this->users->getUser();
+		self::nologin();
+
+		$users = $this->users->getAll();
 
 		$data['breadcrumb'] = 'Users';
 		$data['record'] = $users;

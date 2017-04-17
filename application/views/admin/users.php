@@ -24,6 +24,8 @@
           <th>S.No</th>
           <th>Username</th>
           <th>Email</th>
+          <th>Type</th>
+          <th>Active</th>
           <th>Action</th>
 
         </tr>
@@ -39,10 +41,20 @@
           <td><?php echo $count; ?></td>
           <td><?php echo $rec->username; ?></td>
           <td><?php echo $rec->email; ?></td>
+          <td><?php echo $rec->type; ?></td>
+          <td><?php //echo $rec->active; ?>
+            
+              <!-- Rounded switch -->
+                <label class="switch">
+                  <input data-userid="<?php echo $rec->Id; ?>" class="user-switch" value="Y" type="checkbox" <?php echo ($rec->active == 'Y') ?  'checked' : ''; ?>>
+                  <div class="slider round"></div>
+                </label>
+
+          </td>
           <td>
-            <button data-toggle="modal" data-target="#myModal" data-userid="<?php echo $rec->Id; ?>"  class="btn btn-primary edit-user"><i class="fa fa-edit"></i></button>
+            <button data-userid="<?php echo $rec->Id; ?>"  class="btn btn-primary edit-user"><i class="fa fa-edit"></i></button>
             &nbsp; &nbsp; &nbsp; &nbsp;
-        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"  data-userid="<?php echo $rec->Id; ?>"><i class="fa fa-trash"></i></button>           
+        <button class="btn btn-primary delete-user"  data-userid="<?php echo $rec->Id; ?>"><i class="fa fa-trash"></i></button>           
           </td>
         </tr>
         <?php $count++; } //endforeach ?>
