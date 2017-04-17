@@ -54,11 +54,13 @@ class Main extends CI_Controller {
 			$record = array('username' => $_POST['username_email'],'password' => $_POST['password']);
 			$rec = $this->login_model->userLogin($record);
 
-			//echo '<pre>'; print_r($rec); die;
+//			echo '<pre>'; print_r($rec); die;
 
 			if(!empty($rec) && $this->phpass->check($this->input->post('password'), $rec->password)) {
 
-				echo 'Login successfull. User Id: '.$rec->Id; die;
+				$this->login_model->lastLogin($rec->Id);
+				//echo 'Login successfull. User Id: '.$rec->Id; die;
+					redirect(site_url('me/profile'));
 
 			} else {
 				echo 'Login Failed! Please try again'; 
@@ -89,6 +91,7 @@ class Main extends CI_Controller {
 				unset($_POST['passconf']);
 
 				$_POST['password'] = $this->phpass->hash($_POST['password']);
+				$_POST['created_at'] = date('Y-m-d H:i:s',time());
 				
 				if($this->db->insert('users', $_POST)) {
 

@@ -17,12 +17,15 @@ class Login_model extends CI_Model {
         	return $query->row();
         }
         public function userLogin($record) {
-                $query = $this->db->from('users');
+                 $query = $this->db->from('users');
                  $query->where(['username' => $record['username']])->or_where(['email'=> $record['username']]);
                  return $query->get()->row();
-
-
         }
+        public function lastLogin($id) {
+
+            return $query = $this->db->set('last_login',date('Y-m-d H:i:s',time()))->where('Id',$id)->update('users');
+
+        } //end lastLogin
 
 }
 

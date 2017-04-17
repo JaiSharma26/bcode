@@ -65,3 +65,9 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+.profile-frm
+{
+
+  margin:50px auto;
+  max-width: 300px;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2017 at 02:45 PM
+-- Generation Time: Apr 17, 2017 at 04:00 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -52,15 +52,21 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(300) NOT NULL,
-  `password` varchar(700) NOT NULL
+  `password` varchar(700) NOT NULL,
+  `type` varchar(10) NOT NULL DEFAULT 'freelancer',
+  `active` enum('Y','N') NOT NULL DEFAULT 'N',
+  `created_at` datetime NOT NULL,
+  `last_login` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`Id`, `name`, `username`, `email`, `password`) VALUES
-(1, 'Test user', 'tuser', 'tuser@bcode.com', '$2a$08$iduemO1XRajl.3HQSVESauS6gnp.dd0GbMKHzMsuzaaLpTgSniBZ6');
+INSERT INTO `users` (`Id`, `name`, `username`, `email`, `password`, `type`, `active`, `created_at`, `last_login`) VALUES
+(2, 'Abc', 'Abc', 'abc@bcode.com', '$2a$08$yaOICX8X4JgUwmnnzUWB7ej5N4ZV4.dC4/G66RbPCqxF9q0dtXCVG', 'freelancer', 'Y', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'xyz', 'xyz', 'xyz@bcode.com', '$2a$08$AeH8wAflUL7xhmYvtSGlo.q.Cat9wpOWJDzXIDcIk0qIF8i2wOdo.', 'freelancer', 'N', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'Dev', 'dev', 'dev@bcode.com', '$2a$08$RblLt4EUejGL29CTJST4Oeexs/CweAeW6ybbiI4PrFDtXXUaYSCaq', 'freelancer', 'N', '2017-04-17 15:03:02', '2017-04-17 15:36:58');
 
 --
 -- Indexes for dumped tables
@@ -92,7 +98,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
