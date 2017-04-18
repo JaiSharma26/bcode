@@ -3,13 +3,13 @@
 	<div id="left-block" class="col-lg-6 col-md-6 col-xs-12">
 			
 		<div class="btn-cont">
-			<button name="freelancer" class="btn btn-warning">Freelancer</button>
+			<button name="freelancer" class="btn btn-warning user-type">Freelancer</button>
 		</div>
 
 	</div>
 	<div id="right-block" class="col-lg-6 col-md-6 col-xs-12">
 		<div class="btn-cont">
-			<button name="customer" class="btn btn-primary">Customer</button>
+			<button name="customer" class="btn btn-primary user-type">Customer</button>
 		</div>
 
 	</div>
@@ -19,6 +19,8 @@
 
 
 <div class="freelancer-frm user-profile">
+
+<div class="profile-frm">
 
 <form method="post" action="">
 	<div class="form-group">
@@ -51,10 +53,12 @@
 			<button class="btn btn-primary">Submit</button>
 	</div>
 </form>
+</div>
 </div> <!---(end)freelancer-frm---->
 
 
 <div class="customer-frm user-profile">
+<div class="profile-frm">
 <form method="post" action="">
 	<div class="form-group">
 			<label>Name:</label>
@@ -68,4 +72,5 @@
 			<button class="btn btn-primary">Submit</button>
 	</div>
 </form>
+</div>
 </div> <!---(end)customer-frm---->

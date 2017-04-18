@@ -13,5 +13,4 @@ function nologin($redirect_url) {
 		} //endif
 }
 
-
 ?>

@@ -111,6 +111,17 @@ $(document).ready(function(){
 
 	});
 
-	/********* frontend **************/
+	/********* frontend ************/
+	$('.user-type').click(function() {
+		var user_type = $(this).attr('name');
+		if(user_type === 'freelancer') {
+				var user_frm = $('.freelancer-frm').html();
+				$('#blocks').html(user_frm);
+		} else if(user_type === 'customer') {
+				var user_frm = $('.customer-frm').html();	
+				$('#blocks').html(user_frm);
+		}
+
+	}); //end .user-type
 
 });
