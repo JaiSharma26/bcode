@@ -66,7 +66,7 @@ $(document).ready(function(){
 
 	$('.delete-user').on('click',function() {
 		var userId = $(this).data('userid');
-		bootbox.confirm("This is the default confirm!", function(result){
+		bootbox.confirm("Do you want to delete this record", function(result){
 			 //console.log('This was logged in the callback: ' + result);
 
 			 if(result == true) {
@@ -110,5 +110,7 @@ $(document).ready(function(){
 			});
 
 	});
+
+	/********* frontend **************/
 
 });

@@ -11,6 +11,7 @@ class Main extends CI_Controller {
 		$this->load->library('phpass');
 		$this->load->model('login_model');
 		$this->load->database();
+		$this->load->library('session');
 
 
 	}
@@ -60,6 +61,7 @@ class Main extends CI_Controller {
 
 				$this->login_model->lastLogin($rec->Id);
 				//echo 'Login successfull. User Id: '.$rec->Id; die;
+					$this->session->set_userdata(array('uid' => $rec->Id));
 					redirect(site_url('me/profile'));
 
 			} else {

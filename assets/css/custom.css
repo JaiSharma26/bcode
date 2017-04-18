@@ -56,8 +56,6 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -70,4 +68,22 @@ input:checked + .slider:before {
 
   margin:50px auto;
   max-width: 300px;
+}
+#blocks
+{
+  height:100%;
+  width: 100%;
+}
+#left-block
+{
+  background:#c0c0c0;
+  height:100%;
+}
+.btn-cont
+{
+  margin:40% auto auto 40%;
+}
+.user-profile
+{
+  display:none;
 }

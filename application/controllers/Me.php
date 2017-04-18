@@ -11,9 +11,13 @@ class Me extends CI_Controller {
 		$this->load->library('phpass');
 		$this->load->model('login_model');
 		$this->load->database();
+		$this->load->helper('auth_helper');
 	}
 
 	public function profile() {
+
+		nologin(site_url());
+
 		$this->load->view('frontend/inc/header');
 		$this->load->view('frontend/profile');
 		$this->load->view('frontend/inc/footer');
