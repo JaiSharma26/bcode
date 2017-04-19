@@ -22,7 +22,7 @@
 
 <div class="profile-frm">
 
-<form method="post" action="">
+<form method="post" action="<?php site_url('me/profile'); ?>">
 	<div class="form-group">
 			<label>Name:</label>
 			<input type="text" name="name" value="" class="form-control">
@@ -50,7 +50,8 @@
 			</select>
 	</div>
 	<div class="form-group">
-			<button class="btn btn-primary">Submit</button>
+			<!---<button class="btn btn-primary" name="freelancer_submit">Submit</button>---->
+			<input type="submit" class="btn btn-primary" name="freelancer_submit" value="Submit" />
 	</div>
 </form>
 </div>
@@ -59,7 +60,7 @@
 
 <div class="customer-frm user-profile">
 <div class="profile-frm">
-<form method="post" action="">
+<form method="post" action="<?php site_url('me/profile'); ?>">
 	<div class="form-group">
 			<label>Name:</label>
 			<input type="text" name="name" value="" class="form-control">
@@ -69,7 +70,8 @@
 			<textarea name="description" class="form-control"></textarea>
 	</div>
 	<div class="form-group">
-			<button class="btn btn-primary">Submit</button>
+			<!----<button class="btn btn-primary" name="customer_submit">Submit</button>---->
+			<input type="submit" class="btn btn-primary" name="customer_submit" value="Submit" />
 	</div>
 </form>
 </div>

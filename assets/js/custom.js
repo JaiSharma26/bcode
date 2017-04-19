@@ -77,9 +77,7 @@ $(document).ready(function(){
 			 		url:URL+'admin/user/delete',
 			 		data:{userId : userId},
 			 		success:function(data) {
-
 			 			//after delete result
-
 			 		}
 
 			 	});
@@ -123,5 +121,7 @@ $(document).ready(function(){
 		}
 
 	}); //end .user-type
+
+	$('')
 
 });
