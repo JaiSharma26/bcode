@@ -26,32 +26,47 @@ class Me extends CI_Controller {
         } else {
           return true;
         }
-
-		/*
-		$this->form_validation->set_rules('name', 'Name', 'trim|required');
-		$this->form_validation->set_rules('description', 'Description', 'trim|required');
-		$this->form_validation->set_rules('expertise', 'Expertise', 'trim|required');
-		$this->form_validation->set_rules('experience', 'Experience', 'trim|required');
-		if ($this->form_validation->run() == FALSE)
-        {
-           return $this->form_validation->error_array();
-        } else {
-          return true;
-        }
-        */
-
 	}
 
 	public function profile() {
 
 		nologin(site_url());
+
 		if(isset($_POST) && !empty($_POST)) {
 				$validate = self::profile_validation($_POST);
 				if(is_array($validate)) {
 						$success = array('success' => 0, 'message' => $validate);
 						echo json_encode($success); exit();
 				} else {
-					 echo 'working'; exit();
+					 //echo 'working'; exit();
+					$_POST['expertise'] = json_encode(explode(',',$_POST['expertise']));
+					print_r($_POST); exit();
+
+					if(isset($_POST['freelancer_submit'])) {
+
+						unset($_POST['freelancer_submit']);
+						unset($_POST['name']);
+
+						$_POST['expertise'] = json_encode(explode(',',$_POST['expertise']));
+
+						$_POST['userId'] = $this->session->userdata('uid');
+						$_POST['created_at'] = date('Y-m-d H:i:s',time());
+
+
+						if($this->db->insert('profile_freelancer', $_POST)) {
+								$success = array('success' => 1, 'message' => 'Record Inserted Successfully');
+								echo json_encode($success); exit();						
+						} //endif
+					} else if(isset($_POST['customer_submit'])) {
+						unset($_POST['customer_submit']);
+						if($this->db->insert('profile_customer', $_POST)) {
+								$_POST['userId'] = $this->session->userdata('uid');
+								$_POST['created_at'] = date('Y-m-d H:i:s',time());
+								$success = array('success' => 1, 'message' => 'Record Inserted Successfully');
+								echo json_encode($success); exit();						
+						} //endif
+					} //endif
+
 				}
 		}
 

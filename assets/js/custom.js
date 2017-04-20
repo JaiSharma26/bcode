@@ -122,6 +122,33 @@ $(document).ready(function(){
 
 	}); //end .user-type
 
-	$('')
+	
+	$(document).on('click','.profile-submit',function(e) {
+		e.preventDefault();
+		var record = $(this).parents('form').serialize();
+		//alert('working');
+		$.ajax({
+				type:'POST',
+				url:URL+'me/profile',
+				data:record,
+				success:function(data){
+					//alert(data);
+					console.log(data);	
+					$('.error-msg').html('');
+					var Obj = $.parseJSON(data);
+					if(Obj.success == 0) {
+
+						$.each(Obj.message, function(key,val){
+							$('.error-msg').append('<p><strong>' + val + '</strong></p>');
+						});
+						
+					} else {
+						//$('.error-msg').html('Profile added successfully. You are ready for further action');
+						console.log(data);
+					}
+				}
+
+		});
+	});
 
 });

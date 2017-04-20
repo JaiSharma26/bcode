@@ -21,6 +21,7 @@
 <div class="freelancer-frm user-profile">
 
 <div class="profile-frm">
+<div class="error-msg"></div>
 
 <form method="post" action="<?php site_url('me/profile'); ?>">
 	<div class="form-group">
@@ -51,7 +52,7 @@
 	</div>
 	<div class="form-group">
 			<!---<button class="btn btn-primary" name="freelancer_submit">Submit</button>---->
-			<input type="submit" class="btn btn-primary" name="freelancer_submit" value="Submit" />
+			<input type="submit" class="btn btn-primary profile-submit" name="freelancer_submit" value="Submit" />
 	</div>
 </form>
 </div>
@@ -60,6 +61,7 @@
 
 <div class="customer-frm user-profile">
 <div class="profile-frm">
+<div class="error-msg"></div>
 <form method="post" action="<?php site_url('me/profile'); ?>">
 	<div class="form-group">
 			<label>Name:</label>
@@ -71,7 +73,7 @@
 	</div>
 	<div class="form-group">
 			<!----<button class="btn btn-primary" name="customer_submit">Submit</button>---->
-			<input type="submit" class="btn btn-primary" name="customer_submit" value="Submit" />
+			<input type="submit" class="btn btn-primary profile-submit" name="customer_submit" value="Submit" />
 	</div>
 </form>
 </div>
