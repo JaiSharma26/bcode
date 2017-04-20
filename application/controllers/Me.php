@@ -39,6 +39,7 @@ class Me extends CI_Controller {
 						echo json_encode($success); exit();
 				} else {
 					 //echo 'working'; exit();
+					echo $_POST['userId'] = $this->session->userdata('uid').'<br>';
 					$_POST['expertise'] = json_encode(explode(',',$_POST['expertise']));
 					print_r($_POST); exit();
 
@@ -48,10 +49,8 @@ class Me extends CI_Controller {
 						unset($_POST['name']);
 
 						$_POST['expertise'] = json_encode(explode(',',$_POST['expertise']));
-
 						$_POST['userId'] = $this->session->userdata('uid');
 						$_POST['created_at'] = date('Y-m-d H:i:s',time());
-
 
 						if($this->db->insert('profile_freelancer', $_POST)) {
 								$success = array('success' => 1, 'message' => 'Record Inserted Successfully');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2017 at 04:00 PM
+-- Generation Time: Apr 20, 2017 at 04:05 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -44,6 +44,35 @@ INSERT INTO `admin` (`id`, `username`, `password`, `email`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `profile_customer`
+--
+
+CREATE TABLE `profile_customer` (
+  `Id` int(50) UNSIGNED NOT NULL,
+  `description` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile_freelancer`
+--
+
+CREATE TABLE `profile_freelancer` (
+  `Id` int(50) UNSIGNED NOT NULL,
+  `userId` int(50) NOT NULL,
+  `description` text NOT NULL,
+  `expertise` varchar(1000) NOT NULL,
+  `experience` varchar(30) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -64,9 +93,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Id`, `name`, `username`, `email`, `password`, `type`, `active`, `created_at`, `last_login`) VALUES
-(2, 'Abc', 'Abc', 'abc@bcode.com', '$2a$08$yaOICX8X4JgUwmnnzUWB7ej5N4ZV4.dC4/G66RbPCqxF9q0dtXCVG', 'freelancer', 'Y', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'xyz', 'xyz', 'xyz@bcode.com', '$2a$08$AeH8wAflUL7xhmYvtSGlo.q.Cat9wpOWJDzXIDcIk0qIF8i2wOdo.', 'freelancer', 'N', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'Dev', 'dev', 'dev@bcode.com', '$2a$08$RblLt4EUejGL29CTJST4Oeexs/CweAeW6ybbiI4PrFDtXXUaYSCaq', 'freelancer', 'N', '2017-04-17 15:03:02', '2017-04-17 15:36:58');
+(2, 'Abc', 'Abc', 'abc@bcode.com', '$2a$08$yaOICX8X4JgUwmnnzUWB7ej5N4ZV4.dC4/G66RbPCqxF9q0dtXCVG', 'freelancer', 'N', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'xyz', 'xyz', 'xyz@bcode.com', '$2a$08$AeH8wAflUL7xhmYvtSGlo.q.Cat9wpOWJDzXIDcIk0qIF8i2wOdo.', 'freelancer', 'Y', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'Dev', 'dev', 'dev@bcode.com', '$2a$08$RblLt4EUejGL29CTJST4Oeexs/CweAeW6ybbiI4PrFDtXXUaYSCaq', 'freelancer', 'Y', '2017-04-17 15:03:02', '2017-04-20 13:37:40');
 
 --
 -- Indexes for dumped tables
@@ -77,6 +106,18 @@ INSERT INTO `users` (`Id`, `name`, `username`, `email`, `password`, `type`, `act
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profile_customer`
+--
+ALTER TABLE `profile_customer`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `profile_freelancer`
+--
+ALTER TABLE `profile_freelancer`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `users`
@@ -94,6 +135,16 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `profile_customer`
+--
+ALTER TABLE `profile_customer`
+  MODIFY `Id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `profile_freelancer`
+--
+ALTER TABLE `profile_freelancer`
+  MODIFY `Id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
