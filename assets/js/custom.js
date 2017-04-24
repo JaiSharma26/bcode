@@ -151,4 +151,21 @@ $(document).ready(function(){
 		});
 	});
 
+/**** post job *****/
+
+	$('#submit_job').click(function(e){
+			e.preventDefault();
+			var frm_rec = $(this).parents('form').serialize();
+		
+			$.ajax({
+				type:'POST',
+				url:URL+'dashboard/submitjob',
+				data:frm_rec,
+				success:function(data) {
+					alert(data);
+					$(this).parents('form').reset();
+				}
+			});
+	});
+
 });

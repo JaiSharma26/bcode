@@ -5,7 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url();?>assets/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
@@ -62,8 +62,8 @@
           </ul>
         </li>
         <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
+          <a href="<?php echo site_url('admin/jobs'); ?>">
+            <i class="fa fa-th"></i> <span>Jobs Posted</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
             </span>

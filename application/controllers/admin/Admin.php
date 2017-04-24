@@ -25,6 +25,7 @@ class Admin extends CI_Controller {
 		$this->load->library('encrypt');
 		$this->load->model('login_model');
 		$this->load->model('admin_user','users');
+		$this->load->model('job_posts','jobs');
 		$this->load->library('phpass');
 		$this->load->library('session');
 	}
@@ -65,7 +66,10 @@ class Admin extends CI_Controller {
 		*/
 		self::nologin();
 
-		$this->load->view('admin/inc/header');
+		$data['usersCount'] = count($this->users->getAll());
+		$data['jobs'] = count($this->jobs->getAll());
+
+		$this->load->view('admin/inc/header',$data);
 		$this->load->view('admin/inc/sidebar');
 		$this->load->view('admin/index');
 		$this->load->view('admin/inc/footer');
@@ -88,6 +92,17 @@ class Admin extends CI_Controller {
 		//echo '<pre>'; print_r($users); die;
 	}
 	
+	public function jobs() {
+
+		$data['jobs'] = $this->jobs->getAll();
+		$data['breadcrumb'] = 'Jobs Posted';
+		$this->load->view('admin/inc/header',$data);
+		$this->load->view('admin/inc/sidebar');
+		$this->load->view('admin/jobs');
+		$this->load->view('admin/inc/footer');
+
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();

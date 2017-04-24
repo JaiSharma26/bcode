@@ -39,8 +39,8 @@ class Me extends CI_Controller {
 						echo json_encode($success); exit();
 				} else {
 					 //echo 'working'; exit();
-					echo $_POST['userId'] = $this->session->userdata('uid').'<br>';
-					$_POST['expertise'] = json_encode(explode(',',$_POST['expertise']));
+					//$_POST['userId'] = $this->session->userdata('uid');
+					//$_POST['expertise'] = json_encode(explode(',',$_POST['expertise']));
 					print_r($_POST); exit();
 
 					if(isset($_POST['freelancer_submit'])) {

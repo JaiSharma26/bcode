@@ -55,14 +55,21 @@ class Main extends CI_Controller {
 			$record = array('username' => $_POST['username_email'],'password' => $_POST['password']);
 			$rec = $this->login_model->userLogin($record);
 
-//			echo '<pre>'; print_r($rec); die;
+			//echo '<pre>'; print_r($rec); die;
 
 			if(!empty($rec) && $this->phpass->check($this->input->post('password'), $rec->password)) {
 
 				$this->login_model->lastLogin($rec->Id);
 				//echo 'Login successfull. User Id: '.$rec->Id; die;
 					$this->session->set_userdata(array('uid' => $rec->Id));
-					redirect(site_url('me/profile'));
+
+					if($rec->type === 'customer') {
+						redirect(site_url('dashboard/postjob'));						
+					} else if($rec->type === 'freelancer') {
+						redirect(site_url('me/profile'));
+					} else {
+						redirect(site_url('me/profile'));
+					}
 
 			} else {
 				echo 'Login Failed! Please try again'; 
@@ -108,6 +115,10 @@ class Main extends CI_Controller {
 		$this->load->view('frontend/inc/header');
 		$this->load->view('frontend/register');
 		$this->load->view('frontend/inc/footer');
+	}
+
+	public function post(){
+		//echo 'working';
 	}
 
 }
