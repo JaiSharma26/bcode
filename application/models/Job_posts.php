@@ -17,6 +17,13 @@ class Job_posts extends CI_Model {
      			->join('users', 'job_posts.customerId = users.Id', 'left')
      			->get()->result();
      }
+     public function getSingle($id) {
+     	return $this->db->select('job_posts.*,users.Id,users.username')
+     			->from('job_posts')
+     			->join('users', 'job_posts.customerId = users.Id', 'left')
+     			->where(['job_posts.job_Id' => $id])
+     			->get()->row();	
+     }
 
 
 }

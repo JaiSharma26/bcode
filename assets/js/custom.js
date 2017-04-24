@@ -109,6 +109,19 @@ $(document).ready(function(){
 
 	});
 
+	/**** job posts ******/
+
+	$(document).on('click','edit-job',function() {
+
+		$.ajax({
+			type:'POST',
+			url:URL+''
+		})
+
+	});
+
+	/****(end)job posts *****/
+
 	/********* frontend ************/
 	$('.user-type').click(function() {
 		var user_type = $(this).attr('name');
