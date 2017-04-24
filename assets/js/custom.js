@@ -111,15 +111,46 @@ $(document).ready(function(){
 
 	/**** job posts ******/
 
-	$(document).on('click','edit-job',function() {
-
+	$('.edit-job').on('click',function() {
+		var jobId = $(this).data('jobid');
 		$.ajax({
 			type:'POST',
-			url:URL+''
+			url:URL+'admin/jobpost/edit',
+			data:{jobId: jobId},
+			success:function(data) {
+		 		//alert(data);
+		 		$('#myModal .modal-body').html(data);
+		 		$('#myModal').modal('show');
+		 	}
+
 		})
 
 	});
 
+	/**** delete job ****/
+
+$('.delete-job').on('click',function() {
+		var jobId = $(this).data('jobid');
+		bootbox.confirm("Do you want to delete this record", function(result){
+			 //console.log('This was logged in the callback: ' + result);
+
+			 if(result == true) {
+
+			 	$.ajax({
+
+			 		type:"POST",
+			 		url:URL+'admin/jobpost/delete',
+			 		data:{jobId: jobId},
+			 		success:function(data) {
+			 			//after delete result
+			 		}
+
+			 	});
+
+			 }
+
+		});
+	});
 	/****(end)job posts *****/
 
 	/********* frontend ************/

@@ -25,5 +25,10 @@ class Job_posts extends CI_Model {
      			->get()->row();	
      }
 
+     public function delete($id) {
+     	return $this->db->where('job_Id', $id);
+			  $this->db->delete('job_posts');
+     }
+
 
 }

@@ -10,14 +10,18 @@ class Jobpost extends CI_Controller {
 		$this->load->library('phpass');
 		$this->load->library('session');
 		$this->load->database();
-		$this->load->model('job_posts','jobs');
 		$this->load->helper('auth_helper');
+		$this->load->model('job_posts','jobs');
 	}
 
-	public function index() {
-
-
-
+	public function edit() {
+		if(isset($_POST) && !empty($_POST)) {
+			$data['job'] = $this->jobs->getSingle($_POST['jobId']);
+			$this->load->view('admin/editjob',$data);
+		}
+	}
+	public function delete() {
+		$this->job->delete($id);
 	}
 
 }

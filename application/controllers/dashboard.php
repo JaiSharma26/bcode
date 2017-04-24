@@ -14,6 +14,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function postjob() {
+		nologin(site_url());
 		$this->load->view('frontend/inc/header');
 		$this->load->view('frontend/postjob.php');
 		$this->load->view('frontend/inc/footer');
