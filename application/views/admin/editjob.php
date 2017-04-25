@@ -15,6 +15,13 @@
 				<textarea name="description" class="form-control"><?php echo $job->description; ?></textarea>
 			</div>
 			<div class="form-group">
+				<label>Status</label>
+				<select name="status" class="form-control">
+					<option value="active">Active</option>
+					<option value="complete">Complete</option>
+				</select>
+			</div>
+			<div class="form-group">
 				
 				<button class="btn btn-primary">Edit</button>
 			</div>

@@ -91,3 +91,11 @@ input:checked + .slider:before {
 {
   color:red;
 }
+.view-job
+{
+  border:solid 1px;
+  min-height: 150px;
+  width:100%;
+  margin:20px auto;
+  padding:15px;
+}

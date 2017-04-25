@@ -29,6 +29,21 @@ class Job_posts extends CI_Model {
      	return $this->db->where('job_Id', $id);
 			  $this->db->delete('job_posts');
      }
+     public function proposals($jobid) {
 
+        /*
+        return $this->db->select('proposal.*,users.Id,users.username,job_posts.job_Id,job_posts.title')
+                ->from('proposal')
+                ->join('users', 'proposal.freelancerId = users.Id', 'left')
+                ->join('job_posts', 'job_posts.job_Id = porposal.jobId', 'left')
+                ->get()->result();
+        */
+        return $this->db->select('proposal.*,users.username,job_posts.title')
+                        ->from('proposal')
+                        ->join('users','proposal.freelancerId = users.Id','left')
+                        ->join('job_posts','job_posts.job_Id = proposal.jobId','left')
+                        ->get()->result();
+
+     }
 
 }

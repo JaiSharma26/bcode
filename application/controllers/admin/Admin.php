@@ -103,6 +103,18 @@ class Admin extends CI_Controller {
 
 	}
 
+	public function proposals($jobid = null) {
+
+		$data['proposals'] = $this->jobs->proposals($jobid);
+		//echo '<pre>'; print_r($data); die;
+		$data['breadcrumb'] = 'Jobs Posted';
+		$this->load->view('admin/inc/header',$data);
+		$this->load->view('admin/inc/sidebar');
+		$this->load->view('admin/proposals');
+		$this->load->view('admin/inc/footer');		
+
+	} //end proposals
+
 	public function logout()
 	{
 		$this->session->sess_destroy();

@@ -24,8 +24,9 @@
           <th>Title</th>
           <th>Skills</th>
           <th>Posted By</th>
-          <th>Active</th>
+          <th>Status</th>
           <th>Action</th>
+          <th>View Proposals</th>
 
         </tr>
       </thead>
@@ -41,7 +42,7 @@
           <td><?php echo $rec->title; ?></td>
           <td><?php echo implode(',',json_decode($rec->skills)); ?></td>
           <td><?php echo $rec->username; ?></td>
-          <td><?php //echo $rec->active; ?>
+          <td><?php echo $rec->status; ?>
             
           </td>
           <td>
@@ -49,6 +50,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp;
         <button class="btn btn-primary delete-job"  data-jobid="<?php echo $rec->job_Id; ?>"><i class="fa fa-trash"></i></button>           
           </td>
+          <td><a href="<?php echo site_url('admin/admin/proposals/'.$rec->job_Id); ?>">View</a></td>
         </tr>
         <?php $count++; } //endforeach ?>
       </tbody>

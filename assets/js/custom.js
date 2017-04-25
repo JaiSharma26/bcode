@@ -212,4 +212,21 @@ $('.delete-job').on('click',function() {
 			});
 	});
 
+
+/**** submit proposal *****/
+
+	$('#submit-proposal').click(function(e) {
+		e.preventDefault();
+		var frm_data = $(this).parents('form').serialize();
+		$.ajax({
+				type:'POST',
+				url:URL+'dashboard/submitproposal',
+				data:frm_data,
+				success:function(data) {
+					alert(data);
+				}
+		});
+
+	});
+
 });

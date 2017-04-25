@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller {
 		$this->load->library('session');
 		$this->load->database();
 		$this->load->helper('auth_helper');
+		$this->load->model('job_posts','jobs');
 	}
 
 	public function postjob() {
@@ -37,6 +38,7 @@ class Dashboard extends CI_Controller {
 		        					'skills' => json_encode(explode(',',$_POST['skills'])),
 		        					 'description' => $_POST['description'],
 		        					 'customerId' => $this->session->userdata('uid'),
+		        					 'status' => 'active',
 		        					 'created_at' => date('Y-m-d H:i:s',time())
 		        					);
 		        	//print_r($record);
@@ -45,6 +47,55 @@ class Dashboard extends CI_Controller {
 		        }
 		}
 	} //end submitjob
+
+	// View jobs
+	public function view($jobid = null){
+
+		if($jobid === null || $jobid == '') {
+			//$jobid = base64_decode($jobid);
+			$data['jobs'] = $this->jobs->getAll();
+			$this->load->view('frontend/inc/header',$data);
+			$this->load->view('frontend/viewjobs.php');
+			$this->load->view('frontend/inc/footer');
+		} else {
+			$data['job'] = $this->jobs->getSingle($jobid);
+			$this->load->view('frontend/inc/header',$data);
+			$this->load->view('frontend/single_job.php');
+			$this->load->view('frontend/inc/footer');
+		}
+
+
+	} //end view
+
+	// submit proposal
+
+	public function submitproposal() {
+
+		if(isset($_POST) && !empty($_POST)) {
+
+			$this->form_validation->set_rules('proposal', 'Proposal', 'trim|required');
+			$this->form_validation->set_rules('bid_amount', 'Amount', 'trim|required');
+
+			if ($this->form_validation->run() == FALSE)
+		    {
+		        print_r($this->form_validation->error_array());
+		    } else {
+
+		    	$bid = array('jobId' => $_POST['jobid'],
+		    				  'freelancerId' => $this->session->userdata('uid'),
+		    				  'proposal' => $_POST['proposal'],
+		    				  'amount' => $_POST['bid_amount'],
+		    				  'created_at' => date('Y-m-d H:i:s',time())
+		    				 );
+		    	if($this->db->insert('proposal',$bid)) {
+		    		return 'success'; exit();
+		    	}
+		    }
+
+
+		} //endif
+
+	}
 
 
 }
