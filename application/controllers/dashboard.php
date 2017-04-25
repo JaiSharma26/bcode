@@ -48,7 +48,7 @@ class Dashboard extends CI_Controller {
 		}
 	} //end submitjob
 
-	// View jobs
+	// View jobs for freelancer
 	public function view($jobid = null){
 
 		if($jobid === null || $jobid == '') {
@@ -66,6 +66,16 @@ class Dashboard extends CI_Controller {
 
 
 	} //end view
+	// view my jobs
+	public function myjobs() {
+
+			$data['jobs'] = $this->jobs->getbyUser($this->session->userdata('uid'));
+			//echo '<pre>'; print_r($data); die;
+			$this->load->view('frontend/inc/header',$data);
+			$this->load->view('frontend/viewjobs.php');
+			$this->load->view('frontend/inc/footer');
+
+	}
 
 	// submit proposal
 

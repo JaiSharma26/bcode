@@ -24,6 +24,18 @@ class Job_posts extends CI_Model {
      			->where(['job_posts.job_Id' => $id])
      			->get()->row();	
      }
+     //Get all jobs of perticular user
+     public function getbyUser($userId) {
+
+        return $this->db->select('job_posts.*,COUNT(proposal.proposal_Id) as proposals')
+                                ->from('job_posts')
+                        ->join('proposal','proposal.jobId = job_posts.job_Id','left')
+                        //->group_by('proposal.proposal_Id')
+                        ->group_by('job_posts.job_Id')
+                        ->where('job_posts.customerId = '.$userId)
+                        //->or_where('proposal.proposal_Id = '.NULL)
+                        ->get()->result();
+    }
 
      public function delete($id) {
      	return $this->db->where('job_Id', $id);

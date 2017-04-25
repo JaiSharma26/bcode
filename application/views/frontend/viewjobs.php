@@ -17,6 +17,17 @@
 			<p>
 				<i><strong>Skills Required:</strong>   <?php echo implode(',',json_decode($job->skills)); ?></i>
 			</p>
+			<?php
+				if(!empty($job->proposals) || $job->proposals != '') {
+			?>
+			<p>
+				<strong>Proposals:</strong>  <?php echo ($job->proposals != '') ? $job->proposals : 0; ?>
+			</p>
+			<?php					
+				}
+			?>
+
+
 		</div>
 	<?php
 			} //endforeach
