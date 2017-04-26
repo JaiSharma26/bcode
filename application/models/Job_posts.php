@@ -25,16 +25,22 @@ class Job_posts extends CI_Model {
      			->get()->row();	
      }
      //Get all jobs of perticular user
-     public function getbyUser($userId) {
+     public function getbyUser($userId, $jobid = null) {
 
-        return $this->db->select('job_posts.*,COUNT(proposal.proposal_Id) as proposals')
+            $this->db->select('job_posts.*,COUNT(proposal.proposal_Id) as proposals')
                                 ->from('job_posts')
                         ->join('proposal','proposal.jobId = job_posts.job_Id','left')
                         //->group_by('proposal.proposal_Id')
-                        ->group_by('job_posts.job_Id')
-                        ->where('job_posts.customerId = '.$userId)
+                        ->group_by('job_posts.job_Id');
+                    if($jobid != null || $jobid != '') {
+                         $this->db->where(['job_posts.job_Id' => $jobid]);
+                        return $query = $this->db->get()->row();
+                    } else {
+                         $this->db->where('job_posts.customerId = '.$userId);
                         //->or_where('proposal.proposal_Id = '.NULL)
-                        ->get()->result();
+                        $query = $this->db->get()->result();
+                        return $query;
+                    }
     }
 
      public function delete($id) {

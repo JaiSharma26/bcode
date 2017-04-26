@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller {
 		$this->load->library('session');
 		$this->load->database();
 		$this->load->helper('auth_helper');
+		$this->load->helper('url');
 		$this->load->model('job_posts','jobs');
 	}
 
@@ -55,25 +56,32 @@ class Dashboard extends CI_Controller {
 			//$jobid = base64_decode($jobid);
 			$data['jobs'] = $this->jobs->getAll();
 			$this->load->view('frontend/inc/header',$data);
-			$this->load->view('frontend/viewjobs.php');
+			$this->load->view('frontend/viewjobs');
 			$this->load->view('frontend/inc/footer');
 		} else {
 			$data['job'] = $this->jobs->getSingle($jobid);
 			$this->load->view('frontend/inc/header',$data);
-			$this->load->view('frontend/single_job.php');
+			$this->load->view('frontend/single_job');
 			$this->load->view('frontend/inc/footer');
 		}
 
 
 	} //end view
 	// view my jobs
-	public function myjobs() {
+	public function myjobs($jobId = null) {
 
-			$data['jobs'] = $this->jobs->getbyUser($this->session->userdata('uid'));
-			//echo '<pre>'; print_r($data); die;
-			$this->load->view('frontend/inc/header',$data);
-			$this->load->view('frontend/viewjobs.php');
-			$this->load->view('frontend/inc/footer');
+			if($jobId != null || $jobId != '') {
+				$data['job'] = $this->jobs->getbyUser($this->session->userdata('uid'),$jobId);
+				$this->load->view('frontend/inc/header',$data);
+				$this->load->view('frontend/single_job');
+				$this->load->view('frontend/inc/footer');				
+			} else {
+				$data['jobs'] = $this->jobs->getbyUser($this->session->userdata('uid'));
+				//echo '<pre>'; print_r($data); die;
+				$this->load->view('frontend/inc/header',$data);
+				$this->load->view('frontend/viewjobs');
+				$this->load->view('frontend/inc/footer');
+			} //endif			
 
 	}
 

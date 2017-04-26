@@ -61,7 +61,7 @@ class Main extends CI_Controller {
 
 				$this->login_model->lastLogin($rec->Id);
 				//echo 'Login successfull. User Id: '.$rec->Id; die;
-					$this->session->set_userdata(array('uid' => $rec->Id));
+					$this->session->set_userdata(array('uid' => $rec->Id,'type' => $rec->type));
 
 					if($rec->type === 'customer') {
 						redirect(site_url('dashboard/postjob'));						
