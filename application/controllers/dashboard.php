@@ -72,6 +72,7 @@ class Dashboard extends CI_Controller {
 
 			if($jobId != null || $jobId != '') {
 				$data['job'] = $this->jobs->getbyUser($this->session->userdata('uid'),$jobId);
+				$data['proposals'] = $this->jobs->proposals($jobId);
 				$this->load->view('frontend/inc/header',$data);
 				$this->load->view('frontend/single_job');
 				$this->load->view('frontend/inc/footer');				

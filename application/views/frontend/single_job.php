@@ -1,5 +1,7 @@
+<?php
+//		echo '<pre>'; print_r($proposal); die;
+?>
 <div class="container">
-
 <div class="col-md-12">
 
 	<p class="title">
@@ -15,11 +17,13 @@
 		<?php echo implode(',',json_decode($job->skills)); ?>
 	</p>
 
-	<a href="#" class="btn btn-primary">Apply</a>
-	<a href="#" class="btn btn-primary">Add to Wishlist</a>
 </div>
 
 <!---- apply on job ------>
+
+<?php
+		if($this->session->userdata('type') === 'freelancer') {
+?>
 
 	<div class="col-md-12">
 
@@ -41,6 +45,41 @@
 	</form>
 
 	</div>
+<?php
+	} else {
+?>
+		
+<!----- show proposals for job ------>
+	<div class="col-md-12">
+
+		<h4>Proposals Submitted: </h4>
+		<hr/>
+
+	<?php
+			foreach($proposals as $proposal) {
+	?>
+		<div class="proposals-submitted">
+			<p>
+				<h4><?php echo $proposal->username; ?></h4><hr/>
+			</p>
+			<p>
+				<label>Proposal:</label><br/>
+				<span><?php echo $proposal->proposal; ?></span>
+			</p>
+			<p>
+				<button class="btn btn-primary" data-userid="<?php echo $proposal->userId; ?>">Approve</button>
+				<button class="btn btn-danger"  data-userid="<?php echo $proposal->userId; ?>">Reject</button>
+			</p>
+			<hr/>
+		</div>
+	<?php } //endforeach ?>
+
+	</div>
+<!----- (end)show proposals for job ----->
+
+<?php
+	} //endif
+?>
 
 <!----(end)apply on job ------>
 
