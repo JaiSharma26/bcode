@@ -99,3 +99,7 @@ input:checked + .slider:before {
   margin:20px auto;
   padding:15px;
 }
+.red
+{
+  border:dotted 2px red;
+}

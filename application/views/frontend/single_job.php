@@ -66,9 +66,31 @@
 				<span><?php echo $proposal->proposal; ?></span>
 			</p>
 			<p>
-				<button class="btn btn-primary" data-userid="<?php echo $proposal->userId; ?>">Approve</button>
-				<button class="btn btn-danger"  data-userid="<?php echo $proposal->userId; ?>">Reject</button>
+				<button class="btn btn-primary approval-btn" data-userid="<?php echo $proposal->userId; ?>">Approve</button>
+				<button class="btn btn-danger reject-btn"  data-userid="<?php echo $proposal->userId; ?>">Reject</button>
+				<button class="btn btn-warning msg-btn"  data-userid="<?php echo $proposal->userId; ?>">Message</button>
 			</p>
+
+			<div id="approval" class="approval-frm-cont" style="display:none;">
+				<form method="post" action="" class="approval-frm">
+					<input type="hidden" name="userid" value="<?php echo $proposal->userId; ?>">
+					<input type="hidden" name="jobid" value="<?php echo $this->uri->segment(3); ?>">
+					<input type="hidden" name="status" value="approve">
+					<div class="form-group">
+						<label>Approval Message(Optional)</label>
+						<textarea class="form-control" name="approval_msg"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Extra Guidlines(Optional)</label>
+						<textarea class="form-control" name="extra_guidlines"></textarea>
+					</div>
+					<div class="form-group">
+					<input type="submit" name="approve" value="Approve" class="btn btn-primary">
+					</div>
+
+				</form>
+			</div>
+
 			<hr/>
 		</div>
 	<?php } //endforeach ?>

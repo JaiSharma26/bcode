@@ -15,6 +15,7 @@ class Job_posts extends CI_Model {
      	return $this->db->select('job_posts.*,users.Id,users.username')
      			->from('job_posts')
      			->join('users', 'job_posts.customerId = users.Id', 'left')
+                ->where(['status' =>'active'])
      			->get()->result();
      }
      public function getSingle($id) {
@@ -22,6 +23,7 @@ class Job_posts extends CI_Model {
      			->from('job_posts')
      			->join('users', 'job_posts.customerId = users.Id', 'left')
      			->where(['job_posts.job_Id' => $id])
+                ->where(['status' =>'active'])
      			->get()->row();	
      }
      //Get all jobs of perticular user
@@ -47,13 +49,15 @@ class Job_posts extends CI_Model {
      	return $this->db->where('job_Id', $id);
 			  $this->db->delete('job_posts');
      }
-     public function proposals($jobid) {
+     public function proposals($jobid = null) {
 
-           return $this->db->select('proposal.*,users.Id as userId,users.username,job_posts.title')
+             $this->db->select('proposal.*,users.Id as userId,users.username,job_posts.title')
                         ->from('proposal')
                         ->join('users','proposal.freelancerId = users.Id','left')
-                        ->join('job_posts','job_posts.job_Id = proposal.jobId','left')
-                        ->get()->result();
+                        ->join('job_posts','job_posts.job_Id = proposal.jobId','left');
+                        if($jobid != null || $jobid != '') 
+                            $this->db->where('proposal.jobId',$jobid);
+                        return $this->db->get()->result();
 
      }
 

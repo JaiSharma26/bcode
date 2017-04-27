@@ -69,7 +69,7 @@ class Dashboard extends CI_Controller {
 	} //end view
 	// view my jobs
 	public function myjobs($jobId = null) {
-
+			//echo $jobId; die;
 			if($jobId != null || $jobId != '') {
 				$data['job'] = $this->jobs->getbyUser($this->session->userdata('uid'),$jobId);
 				$data['proposals'] = $this->jobs->proposals($jobId);
@@ -113,6 +113,30 @@ class Dashboard extends CI_Controller {
 
 
 		} //endif
+
+	}
+
+	// submit approval
+	public function approval(){
+
+			if(isset($_POST) && !empty($_POST)) {
+				$approvalArr = array(
+									  'jobId' => $_POST['jobid'],
+									  'userId' => $_POST['userid'],
+									  'customerId' => $this->session->userdata('uid'),
+									  'status' => $_POST['status'],
+									  'approval_message' => $_POST['approval_msg'],
+									  'extra_guidelines' => $_POST['extra_guidlines'],
+									  'created_at' => date('Y-m-d H:i:s',time())
+									);
+				if($this->db->insert('proposal_approval',$approvalArr)) {
+					$this->db->set(['status'=>'approve'])
+							->where('job_Id',$_POST['jobid'])
+							->update('job_posts');
+						echo json_encode(array('success' => 'true','message' => 'record inserted successfully'));
+				} //endif
+
+			} //endif
 
 	}
 

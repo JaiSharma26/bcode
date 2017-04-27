@@ -229,4 +229,35 @@ $('.delete-job').on('click',function() {
 
 	});
 
+/****** action on proposal i.e approve /reject /message ******/
+	$('.approval-btn').on('click',function() {
+		$(this).parents().find('#approval').show();
+		/*
+		var approval_frm = $(this).parents().find('#approval').('form').serialize();
+		$.ajax({
+				type:'POST',
+				url:URL+'',
+				data:data,
+				success:function(data) {
+					alert(data);
+				}
+		});
+		*/
+		
+	});
+	$(document).on('submit','form.approval-frm',function(e) {
+		e.preventDefault();
+		var approval_frm = $(this).serialize();
+		$.ajax({
+				type:'POST',
+				url:URL+'dashboard/approval',
+				data:approval_frm,
+				success:function(data) {
+					//alert(data);
+					bootbox.alert('You have successfully approved a job');
+				}
+		});
+	});
+
+
 });
