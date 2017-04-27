@@ -46,12 +46,11 @@
 
 	</div>
 <?php
-	} else {
+	} else if($this->session->userdata('type') === 'customer') {
 ?>
 		
 <!----- show proposals for job ------>
 	<div class="col-md-12">
-
 		<h4>Proposals Submitted: </h4>
 		<hr/>
 
