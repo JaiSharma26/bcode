@@ -25,6 +25,7 @@
               <th>Proposal</th>
               <th>Amount</th>
               <th>Date Submitted</th>
+              <th>Approval</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -33,14 +34,15 @@
                       //echo '<pre>'; print_r($record); die;
                         $count = 1;
                         foreach($proposals as $proposal) {
-                    ?>
+                         // $class = ($proposal->status === 'approve') ? 'red' : '';
+                    ?>  
                     <tr>
                       <td><?php echo $count; ?></td>
                       <td><?php echo $proposal->username; ?></td>
                       <td><?php echo $proposal->proposal; ?></td>
                       <td><?php echo $proposal->amount; ?></td>
                       <td><?php echo $proposal->created_at; ?></td>
-                        
+                      <td><?php echo ($proposal->status === 'approve') ? 'Approved' : '' ?></td>
                       </td>
                       <td>
                         <button data-jobid="<?php echo $proposal->jobId; ?>"  class="btn btn-primary edit-proposal"><i class="fa fa-edit"></i></button>

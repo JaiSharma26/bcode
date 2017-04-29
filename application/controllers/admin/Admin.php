@@ -94,7 +94,7 @@ class Admin extends CI_Controller {
 	
 	public function jobs() {
 
-		$data['jobs'] = $this->jobs->getAll();
+		$data['jobs'] = $this->jobs->get();
 		$data['breadcrumb'] = 'Jobs Posted';
 		$this->load->view('admin/inc/header',$data);
 		$this->load->view('admin/inc/sidebar');
@@ -105,7 +105,7 @@ class Admin extends CI_Controller {
 
 	public function proposals($jobid = null) {
 
-		$data['proposals'] = $this->jobs->proposals($jobid);
+		$data['proposals'] = $this->jobs->allProposals($jobid);
 		//echo '<pre>'; print_r($data); die;
 		$data['breadcrumb'] = 'Jobs Posted';
 		$this->load->view('admin/inc/header',$data);
