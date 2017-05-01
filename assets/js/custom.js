@@ -170,11 +170,13 @@ $('.delete-job').on('click',function() {
 	$(document).on('click','.profile-submit',function(e) {
 		e.preventDefault();
 		var record = $(this).parents('form').serialize();
+		var formData = new FormData($(this).parents('form')[0]);
 		//alert('working');
 		$.ajax({
 				type:'POST',
 				url:URL+'me/profile',
-				data:record,
+				data: formData,//record,
+				async: false,
 				success:function(data){
 					//alert(data);
 					console.log(data);	
@@ -190,7 +192,10 @@ $('.delete-job').on('click',function() {
 						//$('.error-msg').html('Profile added successfully. You are ready for further action');
 						console.log(data);
 					}
-				}
+				},
+				cache: false,
+	            contentType: false,
+	            processData: false
 
 		});
 	});
@@ -258,6 +263,24 @@ $('.delete-job').on('click',function() {
 				}
 		});
 	});
-
+	// preview avatar image
+	$(document).on('change','#avatar',function() {
+		readURL(this,'preview-avatar');
+		//alert('working');
+	});
 
 });
+
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            //$('#blah').attr('src', e.target.result);
+            $('.preview-avatar img').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+} //end readURL

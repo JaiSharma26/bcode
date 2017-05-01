@@ -23,7 +23,17 @@
 <div class="profile-frm">
 <div class="error-msg"></div>
 
-<form method="post" action="<?php site_url('me/profile'); ?>">
+<form method="post" action="<?php site_url('me/profile'); ?>" enctype="multipart/form-data">
+	<div class="form-group">
+
+		<div class="preview-avatar">
+			<img src="#" alt="" width="80px"/>
+		</div> <!---(end)preview-avatar---->
+
+		<label>Avater</label>
+		<input id="avatar" type="file" name="avatar" class="form-group">
+
+    </div>
 	<div class="form-group">
 			<label>Name:</label>
 			<input type="text" name="name" value="" class="form-control">
