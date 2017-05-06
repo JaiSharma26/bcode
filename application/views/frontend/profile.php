@@ -24,6 +24,7 @@
 <div class="error-msg"></div>
 
 <form method="post" action="<?php site_url('me/profile'); ?>" enctype="multipart/form-data">
+	<input type="hidden" name="usertype" value="freelancer">
 	<div class="form-group">
 
 		<div class="preview-avatar">
@@ -47,6 +48,14 @@
 			<input type="text" name="expertise" value="" class="form-control">
 			<i>seperate with comma(,) sign</i>
 	</div>
+	<div class="form-group">
+				<label>Gender:</label>
+				<select name="gender" class="form-control">
+					<option value="">Choose</option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+	</div>	
 	<div class="form-group">
 			<label>Experience:</label>
 			<select name="experience" class="form-control">
@@ -73,10 +82,19 @@
 <div class="profile-frm">
 <div class="error-msg"></div>
 <form method="post" action="<?php site_url('me/profile'); ?>">
+	<input type="hidden" name="usertype" value="customer">
 	<div class="form-group">
 			<label>Name:</label>
 			<input type="text" name="name" value="" class="form-control">
 	</div>
+	<div class="form-group">
+				<label>Gender:</label>
+				<select name="gender" class="form-control">
+					<option value="">Choose</option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+	</div>	
 	<div class="form-group">
 			<label>Describe Yourself:</label>
 			<textarea name="description" class="form-control"></textarea>
