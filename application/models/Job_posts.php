@@ -80,4 +80,16 @@ class Job_posts extends CI_Model {
                               ->get()->result();
      }
 
+     public function activejobs() {
+
+        return $this->db->select('job_posts.*,proposal_approval.pId,proposal_approval.status,proposal_approval.approval_message,proposal_approval.extra_guidelines,users.Id as userId, users.username')
+                        ->from('job_posts')
+                        ->join('proposal_approval','proposal_approval.jobId = job_posts.job_Id','left')
+                        ->join('users','users.Id = proposal_approval.userId','left')
+                        ->where('proposal_approval.status','approve')
+                        ->where('proposal_approval.customerId',$this->session->userdata('uid'))
+                        ->get()->result();
+
+     } //end activejobs
+
 }

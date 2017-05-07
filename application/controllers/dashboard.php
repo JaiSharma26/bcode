@@ -138,7 +138,31 @@ class Dashboard extends CI_Controller {
 
 			} //endif
 
-	}
+	} //end approval
+
+	public function activejobs() {
+
+		$data['activejobs'] = $this->jobs->activejobs();
+
+		//echo '<pre>'; print_r($activejobs); die;
+
+		$this->load->view('frontend/inc/header');
+		$this->load->view('frontend/activejobs',$data);
+		$this->load->view('frontend/inc/footer');
+
+	} //end active
+
+	public function finishjob() {
+
+		$this->load->view('frontend/inc/header');
+		$this->load->view('frontend/finishjobs');
+		$this->load->view('frontend/inc/footer');		
+
+	} /end finishjob
+
+	public function canceljob() {
+
+	} //end canceljob
 
 
 }

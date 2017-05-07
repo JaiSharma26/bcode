@@ -64,6 +64,7 @@
 			<p>
 				<label>Proposal:</label><br/>
 				<span><?php echo $proposal->proposal; ?></span>
+				<i>Bid:: <?php echo $proposal->amount; ?></i>
 			</p>
 			<p>
 				<button class="btn btn-primary approval-btn" data-userid="<?php echo $proposal->userId; ?>">Approve</button>

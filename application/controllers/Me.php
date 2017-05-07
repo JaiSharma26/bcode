@@ -51,7 +51,6 @@ class Me extends CI_Controller {
 
 					
 					if(isset($_POST['usertype']) && $_POST['usertype'] === 'freelancer') {
-						//echo '<pre>'; print_r($_POST);die;
 						//unset($_POST['freelancer_submit']);
 						unset($_POST['name']);
 						unset($_POST['usertype']);
@@ -68,11 +67,16 @@ class Me extends CI_Controller {
 								echo json_encode($success); exit();						
 						} //endif
 					} else if(isset($_POST['usertype']) && $_POST['usertype'] === 'customer') {
+							
 						//unset($_POST['customer_submit']);
 						unset($_POST['name']);
+						unset($_POST['usertype']);
 						$_POST['userId'] = $this->session->userdata('uid');
+						$_POST['avatar'] = site_url().'/uploads/avatar/'.$avatar['upload_data']['file_name'];				
 						$_POST['created_at'] = date('Y-m-d H:i:s',time());
+						//echo '<pre>'; print_r($_POST);die;
 						if($this->db->insert('profile_customer', $_POST)) {
+								$this->db->set('type', 'customer')->where('Id',$this->session->userdata('uid'))->update('users');
 								$success = array('success' => 1, 'message' => 'Record Inserted Successfully');
 								echo json_encode($success); exit();						
 						} //endif
