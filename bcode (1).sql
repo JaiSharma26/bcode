@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2017 at 09:37 PM
+-- Generation Time: May 14, 2017 at 07:47 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -40,6 +40,21 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`, `email`, `active`) VALUES
 (1, 'admin', '$2a$08$oEXuXKpTeomcp9zf88PABO5N5a.RYsXkUwxXEgTK/jKZEzFP38rUm', 'admin@gmail.com', 'Y');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `compeleted_jpbs`
+--
+
+CREATE TABLE `compeleted_jpbs` (
+  `c_Id` int(10) UNSIGNED NOT NULL,
+  `jobId` int(50) NOT NULL,
+  `customerId` int(50) NOT NULL,
+  `complete_status` varchar(30) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -191,7 +206,7 @@ INSERT INTO `users` (`Id`, `name`, `username`, `email`, `password`, `type`, `act
 (2, 'Abc', 'Abc', 'abc@bcode.com', '$2a$08$yaOICX8X4JgUwmnnzUWB7ej5N4ZV4.dC4/G66RbPCqxF9q0dtXCVG', 'freelancer', 'N', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'xyz', 'xyz', 'xyz@bcode.com', '$2a$08$AeH8wAflUL7xhmYvtSGlo.q.Cat9wpOWJDzXIDcIk0qIF8i2wOdo.', 'freelancer', 'Y', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (5, 'Dev', 'dev', 'dev@bcode.com', '$2a$08$RblLt4EUejGL29CTJST4Oeexs/CweAeW6ybbiI4PrFDtXXUaYSCaq', 'freelancer', 'N', '2017-04-17 15:03:02', '2017-04-25 08:57:13'),
-(6, 'Bruce Wayne', 'Batman', 'batman@wayne.com', '$2a$08$yLPFahAoYT/FatIdzHVefe9zyZsdgf5lVN3mZRSOxGYdz6Mn11FD2', 'customer', 'Y', '2017-04-24 10:19:39', '2017-05-07 10:03:04'),
+(6, 'Bruce Wayne', 'Batman', 'batman@wayne.com', '$2a$08$yLPFahAoYT/FatIdzHVefe9zyZsdgf5lVN3mZRSOxGYdz6Mn11FD2', 'customer', 'Y', '2017-04-24 10:19:39', '2017-05-14 19:24:30'),
 (7, 'Iron Man', 'ironman', 'ironman@stark.com', '$2a$08$bKaH3IrEq0O4w6T7fyQ91.jmkyJZac659PVwtjEM7FxgYRekRUxaa', 'freelancer', 'N', '2017-04-25 13:20:25', '2017-05-06 19:30:11'),
 (8, 'Flash', 'flash', 'flash@jla.com', '$2a$08$cik5LB3KcPZ8bs1Su9cAE.962g.DWpXRSfJ6Xpwpa3aAYSJ1sX/hO', 'customer', 'N', '2017-05-03 16:34:53', '2017-05-07 07:59:11');
 
@@ -204,6 +219,12 @@ INSERT INTO `users` (`Id`, `name`, `username`, `email`, `password`, `type`, `act
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `compeleted_jpbs`
+--
+ALTER TABLE `compeleted_jpbs`
+  ADD PRIMARY KEY (`c_Id`);
 
 --
 -- Indexes for table `job_posts`
@@ -251,6 +272,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `compeleted_jpbs`
+--
+ALTER TABLE `compeleted_jpbs`
+  MODIFY `c_Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `job_posts`
 --

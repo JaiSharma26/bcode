@@ -158,7 +158,7 @@ class Dashboard extends CI_Controller {
 		$this->load->view('frontend/finishjobs');
 		$this->load->view('frontend/inc/footer');		
 
-	} /end finishjob
+	} //end finishjob
 
 	public function canceljob() {
 

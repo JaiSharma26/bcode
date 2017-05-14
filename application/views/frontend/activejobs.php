@@ -24,10 +24,10 @@
 			</div>
 
 			<div class="col-md-2">
-				<button class='btn btn-primary'>Finish Job</button>
+				<button class='btn btn-primary' data-jobid="<?php echo $job->job_Id; ?>">Finish Job</button>
 				<br/>
 				<br/>
-				<button class='btn btn-danger'>Cancel Job</button>
+				<button data-jobid='<?php echo $job->job_Id; ?>' class='btn btn-danger'>Cancel Job</button>
 			</div>
 
 		</div>
