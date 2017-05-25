@@ -39,13 +39,29 @@
           </ul>
         </li>
         <li>
-          <a href="<?php echo site_url('admin/users')?>">
+          <!----<a href="<?php echo site_url('admin/users')?>">---->
+            <a href="#">
             <i class="fa fa-user"></i> <span>User</span>
+            <span class="pull-right-container">
+              <!--<small class="label pull-right bg-green">new</small>---->
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+           <ul class="treeview-menu">
+            <li class="active"><a href="<?php echo site_url('admin/roles')?>"><i class="fa fa-circle-o"></i> Administrator</a></li>
+            <li><a href="<?php echo site_url('admin/users')?>"><i class="fa fa-circle-o"></i> Users</a></li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="<?php echo site_url('admin/jobs'); ?>">
+            <i class="fa fa-th"></i> <span>Jobs Posted</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
             </span>
           </a>
         </li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
@@ -61,14 +77,7 @@
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
         </li>
-        <li>
-          <a href="<?php echo site_url('admin/jobs'); ?>">
-            <i class="fa fa-th"></i> <span>Jobs Posted</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
-        </li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>

@@ -115,6 +115,16 @@ class Admin extends CI_Controller {
 
 	} //end proposals
 
+	public function roles() {
+
+		$data['breadcrumb'] = 'Admin Roles';
+		$this->load->view('admin/inc/header',$data);
+		$this->load->view('admin/inc/sidebar');
+		$this->load->view('admin/roles');
+		$this->load->view('admin/inc/footer');				
+
+	} //end roles
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
